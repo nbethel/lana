@@ -23,7 +23,7 @@ public class AIGetGolemHealth : RAINAction
 
 		if (enemyObject != null) 
 		{
-			Debug.Log ("Here?");
+			//Debug.Log ("Here?");
 			enemyHealth = enemyObject.GetComponent<Health> ();
 		}
 
