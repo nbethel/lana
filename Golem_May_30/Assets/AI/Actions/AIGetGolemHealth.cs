@@ -19,9 +19,13 @@ public class AIGetGolemHealth : RAINAction
 
     public override void Start(AI ai)
     {
-		enemyObject = enemy.Evaluate(ai.DeltaTime, ai.WorkingMemory).GetValue<GameObject>();
-		if (enemyObject != null)
-			enemyHealth = enemyObject.GetComponent<Health>();
+		enemyObject = enemy.Evaluate (ai.DeltaTime, ai.WorkingMemory).GetValue<GameObject> ();
+
+		if (enemyObject != null) 
+		{
+			Debug.Log ("Here?");
+			enemyHealth = enemyObject.GetComponent<Health> ();
+		}
 
         base.Start(ai);
     }
@@ -30,7 +34,8 @@ public class AIGetGolemHealth : RAINAction
     {
 		if (enemyHealth == null){
 			ai.WorkingMemory.SetItem("defenderhealth", 0f);
-			return ActionResult.FAILURE;
+			//Debug.Log ("Here?");
+			return ActionResult.SUCCESS;
 		}
 		ai.WorkingMemory.SetItem("defenderhealth", enemyHealth.health);
 
