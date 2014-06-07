@@ -30,24 +30,20 @@ MonoBehaviour:
       Attack&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
       name=&quot;Wander Constraint&quot; constraint=&quot;( (defender == null) &amp;amp;&amp;amp;
       (trackTarget == null) ) || (forestCamo &amp;gt; 40)  || ((defender == null)
-      &amp;amp;&amp;amp; (forestCamo &amp;gt; 20))&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
-      repeatuntil=&quot;&quot; name=&quot;Wander&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
-      succeed=&quot;any&quot; repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;wander&quot;
-      fail=&quot;any&quot;&gt;&lt;waypointpath waypointsetvariable=&quot;&amp;quot;PetPath&amp;quot;&quot;
-      waypointactiontype=&quot;path&quot; traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot;
-      repeatuntil=&quot;&quot; pathtargetvariable=&quot;wanderTarget&quot; name=&quot;waypointpath&quot;
-      movetargetvariable=&quot;moveTarget&quot;&gt;&lt;move turnspeed=&quot;&quot;
-      repeatuntil=&quot;&quot; name=&quot;Walking&quot; movetarget=&quot;moveTarget&quot;
+      &amp;amp;&amp;amp; (forestCamo &amp;gt; 20))&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;wander&quot; fail=&quot;any&quot;&gt;&lt;waypointpatrol
+      waypointsetvariable=&quot;&amp;quot;PetPath&amp;quot;&quot; waypointactiontype=&quot;patrol&quot;
+      traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
+      pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Walking&quot; movetarget=&quot;moveTarget&quot;
       movespeed=&quot;1&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpath&gt;&lt;animate repeatuntil=&quot;&quot;
-      name=&quot;Walking Animation&quot; animationstate=&quot;Walk&quot; /&gt;&lt;/parallel&gt;&lt;/sequencer&gt;&lt;/constraint&gt;&lt;constraint
+      closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;animate repeatuntil=&quot;&quot;
+      name=&quot;Walking Animation&quot; animationstate=&quot;Walk&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Chase and Attack Constraint&quot;
-      constraint=&quot; (defender != null)&quot;&gt;&lt;action repeatuntil=&quot;&quot;
-      parametervalues=&quot;ZGVmZW5kZXI=&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
-      name=&quot;Set Mode 1&quot; classname=&quot;AISetMode1&quot; /&gt;&lt;parallel
-      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
-      name=&quot;parallel&quot; fail=&quot;any&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Near&amp;quot;&quot;
-      repeatuntil=&quot;running&quot; name=&quot;Detect Close Enough&quot; entityobjectvariable=&quot;enemy&quot;
+      constraint=&quot; (defender != null)&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;all&quot;&gt;&lt;detect
+      sensor=&quot;&amp;quot;Near&amp;quot;&quot; repeatuntil=&quot;success&quot;
+      name=&quot;Detect Close Enough&quot; entityobjectvariable=&quot;enemy&quot;
       aspectvariable=&quot;&quot; aspectobjectvariable=&quot;aimTarget&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
       /&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;Move
       Closer Or Attack&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
@@ -55,33 +51,29 @@ MonoBehaviour:
       waitforsec=&quot;0.3&quot; returnvalue=&quot;success&quot; name=&quot;Run To
       Delay&quot; /&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
       repeatuntil=&quot;&quot; name=&quot;Run&quot; fail=&quot;any&quot;&gt;&lt;move
-      turnspeed=&quot;&quot; repeatuntil=&quot;running&quot; name=&quot;Running&quot;
-      movetarget=&quot;defender&quot; movespeed=&quot;4&quot; facetarget=&quot;&quot;
-      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;animate
-      repeatuntil=&quot;running&quot; name=&quot;Running Animation&quot; animationstate=&quot;Run&quot;
-      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;Attack Constraint&quot; constraint=&quot;aimTarget
-      != null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;Aim and Apply Damage&quot; fail=&quot;any&quot;&gt;&lt;move
-      turnspeed=&quot;150&quot; repeatuntil=&quot;running&quot; name=&quot;face&quot;
-      movetarget=&quot;&quot; movespeed=&quot;&quot; facetarget=&quot;aimTarget&quot;
-      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;animate
-      repeatuntil=&quot;running&quot; name=&quot;Firing Animation&quot; animationstate=&quot;Fire&quot;
-      /&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;running&quot;
-      name=&quot;Damage&quot;&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot;
-      parametervalues=&quot;ZGVmZW5kZXI=&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
-      name=&quot;Apply Damage&quot; classname=&quot;AIDamageEnemy&quot; /&gt;&lt;timer
-      waitforsec=&quot;0.2&quot; returnvalue=&quot;success&quot; priority=&quot;&quot;
-      name=&quot;Damage Delay&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Running&quot; movetarget=&quot;defender&quot;
+      movespeed=&quot;4&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;1.5&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Running
+      Animation&quot; animationstate=&quot;Run&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Attack Constraint&quot;
+      constraint=&quot;aimTarget != null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;Aim and Apply Damage&quot;
+      fail=&quot;any&quot;&gt;&lt;move turnspeed=&quot;150&quot; repeatuntil=&quot;&quot;
+      name=&quot;face&quot; movetarget=&quot;&quot; movespeed=&quot;&quot; facetarget=&quot;aimTarget&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;timer
+      waitforsec=&quot;0.2&quot; returnvalue=&quot;success&quot; name=&quot;Damage
+      Delay&quot; /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;ZGVmZW5kZXI=&quot;
+      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;Apply
+      Damage&quot; classname=&quot;AIDamageEnemy&quot; /&gt;&lt;animate repeatuntil=&quot;&quot;
+      name=&quot;Firing Animation&quot; animationstate=&quot;Attack&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Track&quot; constraint=&quot;(defender
       == null) &amp;amp;&amp;amp; (trackTarget != null) &amp;amp;&amp;amp; (forestCamo
       &amp;lt; 20)&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
       repeatuntil=&quot;&quot; name=&quot;Run&quot; fail=&quot;any&quot;&gt;&lt;move
-      turnspeed=&quot;&quot; repeatuntil=&quot;running&quot; name=&quot;Running&quot;
-      movetarget=&quot;trackTarget&quot; movespeed=&quot;2&quot; facetarget=&quot;&quot;
-      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;animate
-      repeatuntil=&quot;running&quot; name=&quot;Running Animation&quot; animationstate=&quot;Track&quot;
-      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Tracking&quot; movetarget=&quot;trackTarget&quot;
+      movespeed=&quot;2&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;2&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Tracking
+      Animation&quot; animationstate=&quot;Track&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"
       type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
       elementtype="System.String" /></fields><references /></scriptableobject>
     _serializedGameObjects: []

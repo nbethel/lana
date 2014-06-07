@@ -29,10 +29,10 @@ public class AIDamageEnemy : RAINAction
     public override ActionResult Execute(AI ai)
     {
 		if (enemyHealth == null) {
-			Debug.Log ("Heallttthtth");
+			//Debug.Log ("Heallttthtth");
 			return ActionResult.FAILURE;
 		}
-		Debug.Log ("Herehere");
+		//Debug.Log ("Herehere");
 		enemyHealth.Damage(5f);
 
         return ActionResult.SUCCESS;

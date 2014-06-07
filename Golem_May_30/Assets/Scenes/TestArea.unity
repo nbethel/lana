@@ -160,7 +160,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 109c116be5aca4025b9ae2a4b30e70f1, type: 2}
       propertyPath: _dataSerializer._serializedGameObjects.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: c146c0b2b6e804dd6aa43373c868e77f,
+      objectReference: {fileID: 11400000, guid: 1e64845a84a1c4cfdb5204e8ef0dc825,
         type: 2}
     - target: {fileID: 11400000, guid: 109c116be5aca4025b9ae2a4b30e70f1, type: 2}
       propertyPath: _dataSerializer._serializedData
@@ -171,12 +171,12 @@ Prefab:
         type="RAIN.Core.AI" refcount="1" id="0"><field value="True" type="System.Boolean"
         id="_isActive" /><field type="UnityEngine.GameObject" id="_body" gameobject="0"
         /><field type="RAIN.Memory.BasicMemory" reference="1" id="_workingMemory"
-        childrenvisible="True" /><field type="RAIN.Minds.BasicMind" reference="3"
+        childrenvisible="False" /><field type="RAIN.Minds.BasicMind" reference="3"
         id="_mind" childrenvisible="False" /><field type="RAIN.Motion.BasicMotor"
         reference="4" id="_motor" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator"
         reference="7" id="_animator" childrenvisible="False" /><field type="RAIN.Navigation.BasicNavigator"
         reference="12" id="_navigator" childrenvisible="False" /><field type="RAIN.Perception.BasicSenses"
-        reference="14" id="_senses" childrenvisible="False" /><field type="System.Collections.Generic.List"
+        reference="14" id="_senses" childrenvisible="True" /><field type="System.Collections.Generic.List"
         id="_customElements" elementtype="RAIN.Core.CustomAIElement" /></reference><reference
         type="RAIN.Memory.BasicMemory" refcount="1" id="1"><field type="System.Collections.Generic.List"
         id="_memoryItems" elementtype="System.String"><field value="health" type="System.String"
@@ -219,11 +219,11 @@ Prefab:
         type="RAIN.Animation.BasicAnimator" refcount="1" id="7"><field type="System.Collections.Generic.List"
         id="animationStates" elementtype="RAIN.Animation.BasicAnimator+BasicAnimatorState"
         childrenvisible="True"><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
-        reference="8" id="element0" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
+        reference="8" id="element0" childrenvisible="True" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
         reference="9" id="element1" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
-        reference="10" id="element2" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
+        reference="10" id="element2" childrenvisible="True" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
         reference="11" id="element3" childrenvisible="True" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
-        reference="17" id="element4" childrenvisible="False" /></field></reference><reference
+        reference="17" id="element4" childrenvisible="True" /></field></reference><reference
         type="RAIN.Animation.BasicAnimator+BasicAnimatorState" refcount="1" id="8"><field
         value="Walk" type="System.String" id="stateName" /><field type="UnityEngine.AnimationClip"
         id="animationClip" gameobject="2" /><field value="" type="System.String" id="runtimeAnimationName"
@@ -255,9 +255,9 @@ Prefab:
         /><field type="UnityEngine.AnimationClip" id="animationClip" gameobject="5"
         /><field value="" type="System.String" id="runtimeAnimationName" /><field
         value="0" type="System.Int32" id="layer" /><field value="1" type="System.Single"
-        id="weight" /><field value="3" type="System.Single" id="speed" /><field value="0"
-        type="System.Single" id="fadeInTime" /><field value="0" type="System.Single"
-        id="fadeOutTime" /><field value="Loop" type="UnityEngine.WrapMode" id="wrapMode"
+        id="weight" /><field value="1" type="System.Single" id="speed" /><field value="0.1"
+        type="System.Single" id="fadeInTime" /><field value="0.1" type="System.Single"
+        id="fadeOutTime" /><field value="PingPong" type="UnityEngine.WrapMode" id="wrapMode"
         /><field type="System.Collections.Generic.List" id="mixingTransforms" elementtype="RAIN.Animation.BasicAnimator+BasicAnimatorState+MixingTransform"
         /></reference><reference type="RAIN.Navigation.BasicNavigator" refcount="1"
         id="12"><field type="RAIN.Motion.MoveLookTarget" reference="13" id="pathTarget"
@@ -329,7 +329,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 109c116be5aca4025b9ae2a4b30e70f1, type: 2}
       propertyPath: _dataSerializer._serializedGameObjects.Array.data[5]
       value: 
-      objectReference: {fileID: 7400002, guid: c68c24b7bb646aa4387eb53eb36addee, type: 3}
+      objectReference: {fileID: 7400000, guid: 9fbb29b7f97af13478040e865edbdddf, type: 3}
     - target: {fileID: 400072, guid: 109c116be5aca4025b9ae2a4b30e70f1, type: 2}
       propertyPath: m_LocalScale.x
       value: 1.63571882
@@ -6571,13 +6571,13 @@ MonoBehaviour:
       /><field type="RAIN.Core.AI" reference="0" id="_ai" /></fields><references><reference
       type="RAIN.Core.AI" refcount="1" id="0"><field value="True" type="System.Boolean"
       id="_isActive" /><field type="UnityEngine.GameObject" id="_body" gameobject="0"
-      /><field type="RAIN.Memory.BasicMemory" reference="1" id="_workingMemory" childrenvisible="True"
+      /><field type="RAIN.Memory.BasicMemory" reference="1" id="_workingMemory" childrenvisible="False"
       /><field type="RAIN.Minds.BasicMind" reference="3" id="_mind" childrenvisible="False"
       /><field type="RAIN.Motion.BasicMotor" reference="4" id="_motor" childrenvisible="False"
       /><field type="RAIN.Animation.BasicAnimator" reference="7" id="_animator" childrenvisible="False"
       /><field type="RAIN.Navigation.BasicNavigator" reference="12" id="_navigator"
       childrenvisible="False" /><field type="RAIN.Perception.BasicSenses" reference="14"
-      id="_senses" childrenvisible="False" /><field type="System.Collections.Generic.List"
+      id="_senses" childrenvisible="True" /><field type="System.Collections.Generic.List"
       id="_customElements" elementtype="RAIN.Core.CustomAIElement" /></reference><reference
       type="RAIN.Memory.BasicMemory" refcount="1" id="1"><field type="System.Collections.Generic.List"
       id="_memoryItems" elementtype="System.String"><field value="health" type="System.String"
@@ -6619,11 +6619,11 @@ MonoBehaviour:
       type="RAIN.Animation.BasicAnimator" refcount="1" id="7"><field type="System.Collections.Generic.List"
       id="animationStates" elementtype="RAIN.Animation.BasicAnimator+BasicAnimatorState"
       childrenvisible="True"><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
-      reference="8" id="element0" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
+      reference="8" id="element0" childrenvisible="True" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
       reference="9" id="element1" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
-      reference="10" id="element2" childrenvisible="False" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
+      reference="10" id="element2" childrenvisible="True" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
       reference="11" id="element3" childrenvisible="True" /><field type="RAIN.Animation.BasicAnimator+BasicAnimatorState"
-      reference="17" id="element4" childrenvisible="False" /></field></reference><reference
+      reference="17" id="element4" childrenvisible="True" /></field></reference><reference
       type="RAIN.Animation.BasicAnimator+BasicAnimatorState" refcount="1" id="8"><field
       value="Walk" type="System.String" id="stateName" /><field type="UnityEngine.AnimationClip"
       id="animationClip" gameobject="2" /><field value="" type="System.String" id="runtimeAnimationName"
@@ -6655,9 +6655,9 @@ MonoBehaviour:
       /><field type="UnityEngine.AnimationClip" id="animationClip" gameobject="5"
       /><field value="" type="System.String" id="runtimeAnimationName" /><field value="0"
       type="System.Int32" id="layer" /><field value="1" type="System.Single" id="weight"
-      /><field value="3" type="System.Single" id="speed" /><field value="0" type="System.Single"
-      id="fadeInTime" /><field value="0" type="System.Single" id="fadeOutTime" /><field
-      value="Loop" type="UnityEngine.WrapMode" id="wrapMode" /><field type="System.Collections.Generic.List"
+      /><field value="1" type="System.Single" id="speed" /><field value="0.1" type="System.Single"
+      id="fadeInTime" /><field value="0.1" type="System.Single" id="fadeOutTime" /><field
+      value="PingPong" type="UnityEngine.WrapMode" id="wrapMode" /><field type="System.Collections.Generic.List"
       id="mixingTransforms" elementtype="RAIN.Animation.BasicAnimator+BasicAnimatorState+MixingTransform"
       /></reference><reference type="RAIN.Navigation.BasicNavigator" refcount="1"
       id="12"><field type="RAIN.Motion.MoveLookTarget" reference="13" id="pathTarget"
@@ -6726,11 +6726,11 @@ MonoBehaviour:
       id="_serializedGameObject" gameobject="-1" /></reference></references></component>
     _serializedGameObjects:
     - {fileID: 1433376885}
-    - {fileID: 11400000, guid: c146c0b2b6e804dd6aa43373c868e77f, type: 2}
+    - {fileID: 11400000, guid: 1e64845a84a1c4cfdb5204e8ef0dc825, type: 2}
     - {fileID: 7400000, guid: 6e43e2c8b92fdd840b1791634e53191a, type: 3}
     - {fileID: 7400000, guid: 2a9d7cc25cd9c4146924d3b061a5ee88, type: 3}
     - {fileID: 7400000, guid: b668f799eb88a3f4fb6413dd61456914, type: 3}
-    - {fileID: 7400002, guid: c68c24b7bb646aa4387eb53eb36addee, type: 3}
+    - {fileID: 7400000, guid: 9fbb29b7f97af13478040e865edbdddf, type: 3}
     - {fileID: 7400000, guid: 5c9fd06e7b4174543a63f5c27e84afa2, type: 3}
     _serializedCustomData: []
 --- !u!1001 &922607029
