@@ -30,9 +30,10 @@ public class AISetMode0 : RAINAction
 	public override ActionResult Execute(AI ai)
 	{
 		if (enemyMode == null){
-			return ActionResult.FAILURE;
+			return ActionResult.SUCCESS;
 		}
 		enemyMode.set0();
+		ai.WorkingMemory.SetItem("mode", enemyMode.mode);
 		
 		return ActionResult.SUCCESS;
 		

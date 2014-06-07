@@ -34,8 +34,9 @@ public class AIGetMode : RAINAction
 			return ActionResult.FAILURE;
 		}
 		Debug.Log ("NotHi");
- 		enemyMode.change();
-
+ 		//enemyMode.change();
+		Debug.Log ("Well hello");
+		ai.WorkingMemory.SetItem("mode", enemyMode.mode);
 		return ActionResult.SUCCESS;
 		
 	}

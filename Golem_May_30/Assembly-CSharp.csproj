@@ -51,8 +51,12 @@
      <Compile Include="Assets\AI\Actions\AIGetGolemCamo.cs" />
      <Compile Include="Assets\AI\Actions\AIGetGolemHealth.cs" />
      <Compile Include="Assets\AI\Actions\AIGetMode.cs" />
+     <Compile Include="Assets\AI\Actions\AIResetAnMode.cs" />
      <Compile Include="Assets\AI\Actions\AISetMode0.cs" />
      <Compile Include="Assets\AI\Actions\AISetMode1.cs" />
+     <Compile Include="Assets\AI\Actions\AISetMode2.cs" />
+     <Compile Include="Assets\AI\Actions\AISetMode3.cs" />
+     <Compile Include="Assets\AI\Actions\AISetResetAnMode3.cs" />
      <Compile Include="Assets\Camo.cs" />
      <Compile Include="Assets\Health.cs" />
      <Compile Include="Assets\Materials\Fur Files\Support\SynchronizeLights.cs" />
