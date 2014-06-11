@@ -31,6 +31,7 @@ public class AISetMode1 : RAINAction
 	{
 		if (enemyMode == null){
 			//Debug.Log ("Hi");
+			ai.WorkingMemory.SetItem("mode", 1);
 			return ActionResult.SUCCESS;
 		}
 		//Debug.Log ("NotHi");

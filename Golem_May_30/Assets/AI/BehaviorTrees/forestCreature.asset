@@ -13,109 +13,90 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dataSerializer:
     _serializedData: <scriptableobject version="1.0" type="RAIN.BehaviorTrees.BTAsset"><fields><field
-      value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;forestCreature&quot;&gt;&lt;sequencer
-      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;root&quot;&gt;&lt;parallel
-      tiebreaker=&quot;succeed&quot; succeed=&quot;any&quot; repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;Sense&quot; fail=&quot;any&quot;&gt;&lt;detect
-      sensor=&quot;&amp;quot;Track&amp;quot;&quot; repeatuntil=&quot;&quot; name=&quot;Track
-      Golem&quot; entityobjectvariable=&quot;trackTarget&quot; aspectvariable=&quot;&quot;
+      value="&lt;behaviortree version=&quot;1.1&quot; repeatuntil=&quot;&quot; name=&quot;forestCreature&quot;&gt;&lt;parallel
+      tiebreaker=&quot;fail&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      name=&quot;root&quot; fail=&quot;any&quot;&gt;&lt;detect sensor=&quot;&amp;quot;Track&amp;quot;&quot;
+      repeatuntil=&quot;running&quot; name=&quot;Track Golem&quot; entityobjectvariable=&quot;trackTarget&quot;
+      aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
+      /&gt;&lt;detect sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot; repeatuntil=&quot;running&quot;
+      name=&quot;See Golem&quot; entityobjectvariable=&quot;seen&quot; aspectvariable=&quot;&quot;
       aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;detect sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;See Golem&quot; entityobjectvariable=&quot;defender&quot; aspectvariable=&quot;&quot;
-      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;ZGVmZW5kZXI=&quot;
+      /&gt;&lt;action repeatuntil=&quot;running&quot; parametervalues=&quot;c2Vlbg==&quot;
       parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;Get
-      Golem Camo&quot; classname=&quot;AIGetGolemCamo&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
-      parametervalues=&quot;ZGVmZW5kZXI=&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
-      name=&quot;Get Golem Health&quot; classname=&quot;AIGetGolemHealth&quot; /&gt;&lt;/parallel&gt;&lt;selector
-      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; priority=&quot;&quot;
-      name=&quot;Wander Or Attack&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;Wander Constraint&quot; constraint=&quot;(
-      (defender == null) &amp;amp;&amp;amp; (trackTarget == null) ) || (forestCamo
-      &amp;gt; 40)  || ((defender == null) &amp;amp;&amp;amp; (forestCamo &amp;gt;
-      20))&quot;&gt;&lt;parallel tiebreaker=&quot;succeed&quot; succeed=&quot;any&quot;
-      repeatuntil=&quot;&quot; name=&quot;wander&quot; fail=&quot;any&quot;&gt;&lt;waypointpatrol
-      waypointsetvariable=&quot;&amp;quot;PetPath&amp;quot;&quot; waypointactiontype=&quot;patrol&quot;
-      traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
-      pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot;&gt;&lt;move
-      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Walking&quot; movetarget=&quot;moveTarget&quot;
+      Golem Health&quot; classname=&quot;AIGetGolemHealth&quot; /&gt;&lt;action repeatuntil=&quot;running&quot;
+      parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
+      name=&quot;Get Golem Camo&quot; classname=&quot;AIGetGolemCamo&quot; /&gt;&lt;action
+      repeatuntil=&quot;running&quot; parametervalues=&quot;&quot; parameters=&quot;&quot;
+      namespace=&quot;(global)&quot; name=&quot;Forwardpt&quot; classname=&quot;AIForwardpt&quot;
+      /&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;Wander
+      Or Attack&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Wander Constraint&quot; constraint=&quot;( (seen == null) &amp;amp;&amp;amp;
+      (trackTarget == null  || forestCamo &amp;gt;=20) ) || ((mode &amp;lt;  2) &amp;amp;&amp;amp;
+      forestCamo &amp;gt;= 20) || (mode==4 &amp;amp;&amp;amp; trackTarget == null)&quot;&gt;&lt;parallel
+      tiebreaker=&quot;succeed&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      name=&quot;wander&quot; fail=&quot;all&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;PetPath&amp;quot;&quot;
+      waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot;
+      repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot;
+      movetargetvariable=&quot;moveTarget&quot;&gt;&lt;move turnspeed=&quot;&quot;
+      repeatuntil=&quot;&quot; name=&quot;Walking&quot; movetarget=&quot;moveTarget&quot;
       movespeed=&quot;1&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;detect sensor=&quot;&amp;quot;Visual
-      Sensor&amp;quot;&quot; repeatuntil=&quot;&quot; name=&quot;Recheck See&quot;
-      entityobjectvariable=&quot;defender&quot; aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot;
-      aspect=&quot;&amp;quot;golem&amp;quot;&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;Track&amp;quot;&quot;
-      repeatuntil=&quot;&quot; name=&quot;Recheck Track&quot; entityobjectvariable=&quot;trackTarget&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;action repeatuntil=&quot;&quot;
+      parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
+      name=&quot;SetWander&quot; classname=&quot;AISetMode0&quot; /&gt;&lt;animate
+      repeatuntil=&quot;&quot; name=&quot;Walking Animation&quot; animationstate=&quot;Walk&quot;
+      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Chase and Attack Constraint&quot; constraint=&quot;(seen
+      != null) &amp;amp;&amp;amp; ((forestCamo &amp;lt; 20) || (mode &amp;gt;= 2  &amp;amp;&amp;amp;
+      mode !=4))&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;any&quot;
+      repeatuntil=&quot;&quot; name=&quot;chase and attack&quot; fail=&quot;any&quot;&gt;&lt;detect
+      sensor=&quot;&amp;quot;Near&amp;quot;&quot; repeatuntil=&quot;running&quot;
+      name=&quot;Detect Close Enough&quot; entityobjectvariable=&quot;aimTarget&quot;
       aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Walking Animation&quot;
-      animationstate=&quot;Walk&quot; /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;ZGVmZW5kZXI=&quot;
-      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;Recheck
-      Camo&quot; classname=&quot;AIGetGolemCamo&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
-      parametervalues=&quot;ZGVmZW5kZXI=&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
-      name=&quot;SetWander&quot; classname=&quot;AISetMode0&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Chase and Attack Constraint&quot;
-      constraint=&quot; (defender != null)&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
-      succeed=&quot;any&quot; repeatuntil=&quot;&quot; name=&quot;chase and attack&quot;
-      fail=&quot;any&quot;&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
-      name=&quot;Move Closer Or Attack&quot;&gt;&lt;constraint repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;Move Closer Constraint&quot; constraint=&quot;aimTarget
-      == null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;Run&quot; fail=&quot;any&quot;&gt;&lt;timer
+      /&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;Move
+      Closer Or Attack&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
+      name=&quot;Move Closer Constraint&quot; constraint=&quot;aimTarget == null&quot;&gt;&lt;timer
       waitforsec=&quot;0.3&quot; returnvalue=&quot;success&quot; name=&quot;Run To
-      Delay&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Running&quot;
-      movetarget=&quot;defender&quot; movespeed=&quot;4&quot; facetarget=&quot;&quot;
-      closeenoughdistance=&quot;1.5&quot; closeenoughangle=&quot;&quot; /&gt;&lt;animate
-      repeatuntil=&quot;&quot; name=&quot;Running Animation&quot; animationstate=&quot;Run&quot;
-      /&gt;&lt;detect sensor=&quot;&amp;quot;Near&amp;quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;Recheck Close Enough&quot; entityobjectvariable=&quot;aimTarget&quot;
-      aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;ZGVmZW5kZXI=&quot;
-      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;SetChase&quot;
-      classname=&quot;AISetMode2&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      Delay&quot; /&gt;&lt;parallel tiebreaker=&quot;succeed&quot; succeed=&quot;all&quot;
+      repeatuntil=&quot;&quot; name=&quot;Run&quot; fail=&quot;all&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Running&quot; movetarget=&quot;seen&quot;
+      movespeed=&quot;4&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;2.5&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Running
+      Animation&quot; animationstate=&quot;Run&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
+      parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
+      name=&quot;SetChase&quot; classname=&quot;AISetMode2&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Attack Constraint&quot;
       constraint=&quot;aimTarget != null&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
       succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;Aim and Apply Damage&quot;
       fail=&quot;any&quot;&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Firing
       Animation&quot; animationstate=&quot;Attack&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
-      parametervalues=&quot;ZGVmZW5kZXI=&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
+      parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
       name=&quot;Apply Damage&quot; classname=&quot;AIDamageEnemy&quot; /&gt;&lt;move
       turnspeed=&quot;150&quot; repeatuntil=&quot;&quot; name=&quot;face&quot; movetarget=&quot;&quot;
       movespeed=&quot;&quot; facetarget=&quot;aimTarget&quot; closeenoughdistance=&quot;&quot;
       closeenoughangle=&quot;&quot; /&gt;&lt;timer waitforsec=&quot;0.2&quot; returnvalue=&quot;success&quot;
-      name=&quot;Damage Delay&quot; /&gt;&lt;detect sensor=&quot;&amp;quot;Near&amp;quot;&quot;
-      repeatuntil=&quot;&quot; name=&quot;Recheck Close Enough&quot; entityobjectvariable=&quot;aimTarget&quot;
-      aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;ZGVmZW5kZXI=&quot;
+      name=&quot;Damage Delay&quot; /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;c2Vlbg==&quot;
       parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;SetAttack&quot;
-      classname=&quot;AISetMode3&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;detect
-      sensor=&quot;&amp;quot;Track&amp;quot;&quot; repeatuntil=&quot;&quot; name=&quot;Recheck
-      Track&quot; entityobjectvariable=&quot;trackTarget&quot; aspectvariable=&quot;&quot;
-      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;detect sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;Recheck See&quot; entityobjectvariable=&quot;defender&quot; aspectvariable=&quot;&quot;
-      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;detect sensor=&quot;&amp;quot;Near&amp;quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;Detect Close Enough&quot; entityobjectvariable=&quot;aimTarget&quot;
-      aspectvariable=&quot;&quot; aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
-      priority=&quot;&quot; name=&quot;Track&quot; constraint=&quot;(defender == null)
-      &amp;amp;&amp;amp; (trackTarget != null) &amp;amp;&amp;amp; (forestCamo &amp;lt;
-      20)&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot; succeed=&quot;any&quot;
-      repeatuntil=&quot;&quot; name=&quot;Track&quot; fail=&quot;any&quot;&gt;&lt;move
+      classname=&quot;AISetMode3&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Track&quot; constraint=&quot;((seen
+      == null) &amp;amp;&amp;amp; (trackTarget != null) &amp;amp;&amp;amp; (forestCamo
+      &amp;lt; 20)) &amp;amp;&amp;amp; (mode &amp;lt;2)&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;Track&quot; fail=&quot;any&quot;&gt;&lt;move
       turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Tracking&quot; movetarget=&quot;trackTarget&quot;
       movespeed=&quot;2&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;2&quot;
       closeenoughangle=&quot;&quot; /&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Tracking
       Animation&quot; animationstate=&quot;Track&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
-      parametervalues=&quot;ZGVmZW5kZXI=&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
-      name=&quot;Recheck Camo&quot; classname=&quot;AIGetGolemCamo&quot; /&gt;&lt;detect
-      sensor=&quot;&amp;quot;Track&amp;quot;&quot; repeatuntil=&quot;&quot; name=&quot;Recheck
-      Track&quot; entityobjectvariable=&quot;trackTarget&quot; aspectvariable=&quot;&quot;
-      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;detect sensor=&quot;&amp;quot;Visual Sensor&amp;quot;&quot; repeatuntil=&quot;&quot;
-      name=&quot;Recheck See&quot; entityobjectvariable=&quot;defender&quot; aspectvariable=&quot;&quot;
-      aspectobjectvariable=&quot;&quot; aspect=&quot;&amp;quot;golem&amp;quot;&quot;
-      /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;ZGVmZW5kZXI=&quot;
-      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;SetTrack&quot;
-      classname=&quot;AISetMode1&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/sequencer&gt;&lt;/behaviortree&gt;"
+      parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
+      name=&quot;SetTrack&quot; classname=&quot;AISetMode1&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
+      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Keep Running&quot;
+      constraint=&quot;((seen == null) &amp;amp;&amp;amp; (trackTarget != null)) &amp;amp;&amp;amp;
+      mode &amp;gt;= 2&quot;&gt;&lt;parallel tiebreaker=&quot;succeed&quot; succeed=&quot;all&quot;
+      repeatuntil=&quot;&quot; name=&quot;Run&quot; fail=&quot;all&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Running&quot; movetarget=&quot;Forwardpt&quot;
+      movespeed=&quot;4&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;&quot;
+      closeenoughangle=&quot;&quot; /&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Running
+      Animation&quot; animationstate=&quot;Run&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
+      parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
+      name=&quot;SetLost&quot; classname=&quot;AISetMode4&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"
       type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
       elementtype="System.String" /></fields><references /></scriptableobject>
     _serializedGameObjects: []
