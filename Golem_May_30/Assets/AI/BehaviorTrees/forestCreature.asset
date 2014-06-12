@@ -30,15 +30,24 @@ MonoBehaviour:
       namespace=&quot;(global)&quot; name=&quot;Forwardpt&quot; classname=&quot;AIForwardpt&quot;
       /&gt;&lt;selector usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;Wander
       Or Attack&quot;&gt;&lt;constraint repeatuntil=&quot;&quot; priority=&quot;&quot;
-      name=&quot;Wander Constraint&quot; constraint=&quot;( (seen == null) &amp;amp;&amp;amp;
-      (trackTarget == null  || forestCamo &amp;gt;=20) ) || ((mode &amp;lt;  2) &amp;amp;&amp;amp;
-      forestCamo &amp;gt;= 20) || (mode==4 &amp;amp;&amp;amp; trackTarget == null)&quot;&gt;&lt;parallel
-      tiebreaker=&quot;succeed&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
-      name=&quot;wander&quot; fail=&quot;all&quot;&gt;&lt;waypointpatrol waypointsetvariable=&quot;&amp;quot;PetPath&amp;quot;&quot;
-      waypointactiontype=&quot;patrol&quot; traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot;
-      repeatuntil=&quot;&quot; pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot;
-      movetargetvariable=&quot;moveTarget&quot;&gt;&lt;move turnspeed=&quot;&quot;
-      repeatuntil=&quot;&quot; name=&quot;Walking&quot; movetarget=&quot;moveTarget&quot;
+      name=&quot;Confused&quot; constraint=&quot;mode==5&quot;&gt;&lt;parallel tiebreaker=&quot;fail&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;parallel&quot; fail=&quot;any&quot;&gt;&lt;animate
+      repeatuntil=&quot;&quot; name=&quot;animate&quot; animationstate=&quot;Confused&quot;
+      /&gt;&lt;sequencer usepriorities=&quot;False&quot; repeatuntil=&quot;&quot;
+      name=&quot;sequencer&quot;&gt;&lt;timer waitforsec=&quot;2&quot; returnvalue=&quot;success&quot;
+      priority=&quot;&quot; name=&quot;timer&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
+      priority=&quot;&quot; parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot;
+      namespace=&quot;(global)&quot; name=&quot;action&quot; classname=&quot;AISetMode0&quot;
+      /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Wander Constraint&quot; constraint=&quot;(
+      (seen == null) &amp;amp;&amp;amp; (trackTarget == null  || forestCamo &amp;gt;=20)
+      ) || ((mode &amp;lt;  2) &amp;amp;&amp;amp; forestCamo &amp;gt;= 20) || (mode==4
+      &amp;amp;&amp;amp; trackTarget == null)&quot;&gt;&lt;parallel tiebreaker=&quot;succeed&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;wander&quot; fail=&quot;all&quot;&gt;&lt;waypointpatrol
+      waypointsetvariable=&quot;&amp;quot;PetPath&amp;quot;&quot; waypointactiontype=&quot;patrol&quot;
+      traversetype=&quot;pingpong&quot; traverseorder=&quot;forward&quot; repeatuntil=&quot;&quot;
+      pathtargetvariable=&quot;&quot; name=&quot;waypointpatrol&quot; movetargetvariable=&quot;moveTarget&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Walking&quot; movetarget=&quot;moveTarget&quot;
       movespeed=&quot;1&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;&quot;
       closeenoughangle=&quot;&quot; /&gt;&lt;/waypointpatrol&gt;&lt;action repeatuntil=&quot;&quot;
       parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
@@ -79,29 +88,45 @@ MonoBehaviour:
       classname=&quot;AISetMode3&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint
       repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Track&quot; constraint=&quot;((seen
       == null) &amp;amp;&amp;amp; (trackTarget != null) &amp;amp;&amp;amp; (forestCamo
-      &amp;lt; 20)) &amp;amp;&amp;amp; (mode &amp;lt;2)&quot;&gt;&lt;parallel tiebreaker=&quot;succeed&quot;
-      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;Track&quot; fail=&quot;all&quot;&gt;&lt;sequencer
-      usepriorities=&quot;False&quot; repeatuntil=&quot;&quot; name=&quot;sequencer&quot;&gt;&lt;action
-      repeatuntil=&quot;success&quot; priority=&quot;&quot; parametervalues=&quot;dHJhY2tUYXJnZXQ=&quot;
-      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;SetTrackTarget&quot;
-      classname=&quot;AIChooseTrackLocation&quot; /&gt;&lt;move turnspeed=&quot;&quot;
-      repeatuntil=&quot;&quot; priority=&quot;&quot; name=&quot;Tracking&quot; movetarget=&quot;trekTarget&quot;
-      movespeed=&quot;2&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;2&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;/sequencer&gt;&lt;animate repeatuntil=&quot;&quot;
-      name=&quot;Tracking Animation&quot; animationstate=&quot;Track&quot; /&gt;&lt;action
-      repeatuntil=&quot;&quot; parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot;
-      namespace=&quot;(global)&quot; name=&quot;SetTrack&quot; classname=&quot;AISetMode1&quot;
-      /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
+      &amp;lt; 20)) &amp;amp;&amp;amp; (mode &amp;lt;2)&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;sequencer&quot;&gt;&lt;action repeatuntil=&quot;success&quot;
+      priority=&quot;&quot; parametervalues=&quot;dHJhY2tUYXJnZXQ=&quot; parameters=&quot;ZW5lbXk=&quot;
+      namespace=&quot;(global)&quot; name=&quot;SetTrackTarget&quot; classname=&quot;AIChooseTrackLocation&quot;
+      /&gt;&lt;parallel tiebreaker=&quot;succeed&quot; succeed=&quot;all&quot; repeatuntil=&quot;&quot;
+      priority=&quot;&quot; name=&quot;Track&quot; fail=&quot;all&quot;&gt;&lt;parallel
+      tiebreaker=&quot;succeed&quot; succeed=&quot;any&quot; repeatuntil=&quot;running&quot;
+      name=&quot;ResetTracktarget&quot; fail=&quot;all&quot;&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;sequencer&quot;&gt;&lt;timer waitforsec=&quot;7&quot;
+      returnvalue=&quot;success&quot; priority=&quot;&quot; name=&quot;timer&quot;
+      /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;dHJhY2tUYXJnZXQ=&quot;
+      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;action&quot;
+      classname=&quot;AIChooseTrackLocation&quot; /&gt;&lt;/sequencer&gt;&lt;action
+      repeatuntil=&quot;running&quot; parametervalues=&quot;dHJhY2tUYXJnZXQ=&quot;
+      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;action&quot;
+      classname=&quot;AIChooseTrackLocation2&quot; /&gt;&lt;/parallel&gt;&lt;animate
+      repeatuntil=&quot;&quot; name=&quot;Tracking Animation&quot; animationstate=&quot;Track&quot;
+      /&gt;&lt;action repeatuntil=&quot;&quot; parametervalues=&quot;c2Vlbg==&quot;
+      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;SetTrack&quot;
+      classname=&quot;AISetMode1&quot; /&gt;&lt;move turnspeed=&quot;&quot; repeatuntil=&quot;running&quot;
+      name=&quot;Tracking&quot; movetarget=&quot;trekTarget&quot; movespeed=&quot;2&quot;
+      facetarget=&quot;&quot; closeenoughdistance=&quot;0&quot; closeenoughangle=&quot;&quot;
+      /&gt;&lt;/parallel&gt;&lt;/sequencer&gt;&lt;/constraint&gt;&lt;constraint repeatuntil=&quot;&quot;
       priority=&quot;&quot; name=&quot;Keep Running&quot; constraint=&quot;((seen
-      == null) &amp;amp;&amp;amp; (trackTarget != null)) &amp;amp;&amp;amp; mode &amp;gt;=
-      2&quot;&gt;&lt;parallel tiebreaker=&quot;succeed&quot; succeed=&quot;all&quot;
-      repeatuntil=&quot;&quot; name=&quot;Run&quot; fail=&quot;all&quot;&gt;&lt;move
-      turnspeed=&quot;&quot; repeatuntil=&quot;&quot; name=&quot;Running&quot; movetarget=&quot;Forwardpt&quot;
-      movespeed=&quot;4&quot; facetarget=&quot;&quot; closeenoughdistance=&quot;&quot;
-      closeenoughangle=&quot;&quot; /&gt;&lt;animate repeatuntil=&quot;&quot; name=&quot;Running
-      Animation&quot; animationstate=&quot;Run&quot; /&gt;&lt;action repeatuntil=&quot;&quot;
-      parametervalues=&quot;c2Vlbg==&quot; parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot;
-      name=&quot;SetLost&quot; classname=&quot;AISetMode4&quot; /&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"
+      == null) &amp;amp;&amp;amp; (trackTarget != null) &amp;amp;&amp;amp; (mode !=5
+      &amp;amp;&amp;amp;mode &amp;gt;=2))&quot;&gt;&lt;parallel tiebreaker=&quot;succeed&quot;
+      succeed=&quot;all&quot; repeatuntil=&quot;&quot; name=&quot;Run&quot; fail=&quot;all&quot;&gt;&lt;move
+      turnspeed=&quot;&quot; repeatuntil=&quot;running&quot; name=&quot;Running&quot;
+      movetarget=&quot;Forwardpt&quot; movespeed=&quot;4&quot; facetarget=&quot;&quot;
+      closeenoughdistance=&quot;&quot; closeenoughangle=&quot;&quot; /&gt;&lt;animate
+      repeatuntil=&quot;&quot; name=&quot;Running Animation&quot; animationstate=&quot;Run&quot;
+      /&gt;&lt;action repeatuntil=&quot;running&quot; parametervalues=&quot;c2Vlbg==&quot;
+      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;SetLost&quot;
+      classname=&quot;AISetMode4&quot; /&gt;&lt;sequencer usepriorities=&quot;False&quot;
+      repeatuntil=&quot;&quot; name=&quot;sequencer&quot;&gt;&lt;timer waitforsec=&quot;2&quot;
+      returnvalue=&quot;success&quot; priority=&quot;&quot; name=&quot;timer&quot;
+      /&gt;&lt;action repeatuntil=&quot;&quot; priority=&quot;&quot; parametervalues=&quot;c2Vlbg==&quot;
+      parameters=&quot;ZW5lbXk=&quot; namespace=&quot;(global)&quot; name=&quot;action&quot;
+      classname=&quot;AISetMode5&quot; /&gt;&lt;/sequencer&gt;&lt;/parallel&gt;&lt;/constraint&gt;&lt;/selector&gt;&lt;/parallel&gt;&lt;/behaviortree&gt;"
       type="System.String" id="treeData" /><field type="System.Array" id="treeBindings"
       elementtype="System.String" /></fields><references /></scriptableobject>
     _serializedGameObjects: []

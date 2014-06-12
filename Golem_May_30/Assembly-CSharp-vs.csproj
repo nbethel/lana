@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AI\Actions\AIChooseTrackLocation.cs" />
+     <Compile Include="Assets\AI\Actions\AIChooseTrackLocation2.cs" />
      <Compile Include="Assets\AI\Actions\AIChooseWanderLocation.cs" />
      <Compile Include="Assets\AI\Actions\AIDamageEnemy.cs" />
      <Compile Include="Assets\AI\Actions\AIForwardpt.cs" />
@@ -59,6 +60,7 @@
      <Compile Include="Assets\AI\Actions\AISetMode2.cs" />
      <Compile Include="Assets\AI\Actions\AISetMode3.cs" />
      <Compile Include="Assets\AI\Actions\AISetMode4.cs" />
+     <Compile Include="Assets\AI\Actions\AISetMode5.cs" />
      <Compile Include="Assets\AI\Actions\AISetResetAnMode3.cs" />
      <Compile Include="Assets\Camo.cs" />
      <Compile Include="Assets\Health.cs" />

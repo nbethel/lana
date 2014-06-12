@@ -16,18 +16,18 @@ public class Mode : MonoBehaviour {
 	}
 
 	public void set0() {
-		Debug.Log ("Set0"); //For wandering
+		//Debug.Log ("Set0"); //For wandering
 		mode=0;
 		//AI.WorkingMemory.SetItem("mode", mode);
 	}
 	public void set1() {
-		Debug.Log ("Set1"); //For Tracking
+		//Debug.Log ("Set1"); //For Tracking
 		mode=1;
 		//AI.WorkingMemory.SetItem("mode", mode);
 
 	}
 	public void set2() {
-		Debug.Log ("Set2"); //For Chasing
+		//Debug.Log ("Set2"); //For Chasing
 		mode=2;
 		//AI.WorkingMemory.SetItem("mode", mode);
 	}
